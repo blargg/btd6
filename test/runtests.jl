@@ -7,5 +7,6 @@ using btd6
 end
 
 @testset "round_money" begin
-    @test round_money(3) == 396
+    @test round_money(0) == 650
+    @test round_money(3) == 1046
 end

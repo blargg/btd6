@@ -124,12 +124,17 @@ const rounds_unmapped = [
 const rounds = map(t -> (round=t[1], pop=t[2], total=t[3], cumulative=t[4]),
     rounds_unmapped)
 
-"""
-Returns the amount of money earn by that round.
-Returns the sum of all end of round money and ballons popped by the end of this round.
+const STARTING_MONEY = 650;
 
-Actual cash in game will be less if ballons leaked.
-    """
+"""
+Returns the amount of money available at the *end* of that round, not including income from towers, heroes or other abilities.
+This is `starting money + money from popped ballons + end of round money`
+This assumes all ballons popped. Actual cash in game will be less if ballons leaked.
+"""
 function round_money(round_number::Number)
-    rounds[round_number].cumulative
+    if round_number == 0
+        return STARTING_MONEY
+    else
+        return STARTING_MONEY + rounds[round_number].cumulative
+    end
 end
