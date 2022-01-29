@@ -1,7 +1,7 @@
 module btd6
 import JSON
 
-export towers, cost
+export towers, cost, rounds
 
 # TODO would be nice to cache this and update less frequently.
 towers_filename = download("https://statsnite.com/api/btd/v1/towers")
@@ -28,5 +28,7 @@ function cost(name::String, upgrades::Tuple{Number, Number, Number}; difficulty:
 	
 	return total
 end
+
+include("rounds.jl")
 
 end # module
