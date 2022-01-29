@@ -123,3 +123,13 @@ rounds_unmapped = [
 
 rounds = map(t -> (round=t[1], pop=t[2], total=t[3], cumulative=t[4]),
     rounds_unmapped)
+
+"""
+Returns the amount of money earn by that round.
+Returns the sum of all end of round money and ballons popped by the end of this round.
+
+Actual cash in game will be less if ballons leaked.
+    """
+function round_money(round_number::Number)
+    rounds[round_number].cumulative
+end

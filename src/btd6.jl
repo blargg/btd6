@@ -1,7 +1,7 @@
 module btd6
 import JSON
 
-export towers, cost, rounds
+export towers, cost, rounds, round_money
 
 # TODO would be nice to cache this and update less frequently.
 towers_filename = download("https://statsnite.com/api/btd/v1/towers")
