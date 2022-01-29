@@ -1,3 +1,6 @@
+"""
+Bloons Tower Defense 6 information and analysis.
+"""
 module btd6
 import JSON
 
