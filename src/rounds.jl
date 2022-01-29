@@ -1,4 +1,4 @@
-rounds_unmapped = [
+const rounds_unmapped = [
     (1,20,121,121),
     (2,35,137,258),
     (3,35,138,396),
@@ -121,7 +121,7 @@ rounds_unmapped = [
     (120,1342,1562,213718),
 ]
 
-rounds = map(t -> (round=t[1], pop=t[2], total=t[3], cumulative=t[4]),
+const rounds = map(t -> (round=t[1], pop=t[2], total=t[3], cumulative=t[4]),
     rounds_unmapped)
 
 """

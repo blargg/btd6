@@ -6,11 +6,6 @@ using btd6
     @test cost("Dart Monkey", (0,0,0), difficulty="hard") == 215
 end
 
-@testset "rounds" begin
-    @test rounds[1].pop == 20
-    @test rounds[120].cumulative == 213718
-end
-
 @testset "round_money" begin
     @test round_money(3) == 396
 end
