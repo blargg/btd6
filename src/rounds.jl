@@ -121,6 +121,14 @@ const rounds_unmapped = [
     (120, 1342, 1562, 213718),
 ]
 
+"""
+Information collected by https://bloons.fandom.com/wiki/Money.
+
+round = the round number.
+pop = possible money to earn from popping ballons.
+total = for the round, money from pops + money from the end of the round.
+cumulative = cumulative sum of total for all previous rounds and this one.
+"""
 const rounds = map(t -> (round = t[1], pop = t[2], total = t[3], cumulative = t[4]),
     rounds_unmapped)
 
