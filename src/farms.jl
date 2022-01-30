@@ -1,5 +1,7 @@
 # TODO banks
 
+include("Towers.jl")
+
 const banana_value = 20
 const bunches = [4,6,8,16]
 

@@ -14,4 +14,5 @@ end
 @testset "farms" begin
     @test farm_earning((2,0,0)) == 160
     @test farm_payoff((2,0,0)) ≈ 15.875
+    @test farm_upgrade_payoff((0,0,0), (1,0,0)) ≈ 13.5
 end
