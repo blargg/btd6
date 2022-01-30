@@ -32,7 +32,7 @@ This is a rough calculation, as banks will earn various amounts depending on cur
 """
 function farm_earning(upgrades)
     (t,m,b) = upgrades
-    base_gen = bunches[t] * bunch_value
+    base_gen = bunches[t] * bunch_value(t)
 
     if m == 2
         base_gen *= 1.25
