@@ -2,8 +2,28 @@
 
 include("Towers.jl")
 
-const banana_value = 20
-const bunches = [4,6,8,16]
+const bunches = Dict(
+    0 => 4,
+    1 => 6,
+    2 => 8,
+    3 => 16,
+    4 => 5,
+    5 => 5,
+    )
+
+function bunch_value(path1_upgrades)
+    if path1_upgrades < 0 || path1_upgrades > 5
+        throw(ArgumentError("Argument should be within 0 and 5 inclusive"))
+    end
+
+    if path1_upgrades <= 3
+        return 20
+    elseif path1_upgrades == 4
+        return 300
+    elseif path1_upgrades == 5
+        return 1200
+    end
+end
 
 """
 Calculate how much a banana farm earns per round.
@@ -12,13 +32,7 @@ This is a rough calculation, as banks will earn various amounts depending on cur
 """
 function farm_earning(upgrades)
     (t,m,b) = upgrades
-    base_gen = 0
-    if t <= 4
-        bananas_gen = bunches[t+1]
-        base_gen = banana_value * bananas_gen
-    elseif t==5
-        base_gen = 5 * 300
-    end
+    base_gen = bunches[t] * bunch_value
 
     if m == 2
         base_gen *= 1.25
