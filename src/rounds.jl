@@ -132,6 +132,7 @@ This is `starting money + money from popped ballons + end of round money`
 This assumes all ballons popped. Actual cash in game will be less if ballons leaked.
 """
 function round_money(round_number::Number)
+    # TODO: include monkey knowlege. This allows you to start with +200 cash.
     if round_number == 0
         return STARTING_MONEY
     else
