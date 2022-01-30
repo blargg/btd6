@@ -10,3 +10,8 @@ end
     @test round_money(0) == 650
     @test round_money(3) == 1046
 end
+
+@testset "farms" begin
+    @test farm_earning((2,0,0)) == 160
+    @test farm_payoff((2,0,0)) ≈ 15.875
+end

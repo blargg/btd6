@@ -4,7 +4,7 @@ Bloons Tower Defense 6 information and analysis.
 module btd6
 import JSON
 
-export towers, cost, round_money
+export towers, cost, round_money, farm_earning, farm_payoff, farm_upgrade_payoff
 
 # TODO would be nice to cache this and update less frequently.
 towers_filename = download("https://statsnite.com/api/btd/v1/towers")
@@ -33,5 +33,6 @@ function cost(name::String, upgrades::Tuple{Number, Number, Number}; difficulty:
 end
 
 include("rounds.jl")
+include("farms.jl")
 
 end # module
