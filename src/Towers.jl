@@ -1,5 +1,18 @@
 import JSON
 
+"""
+Defines an instance of a tower, placed on the board.
+"""
+mutable struct Tower
+	type::String
+	upgrades::Tuple{Number, Number, Number}
+	banked_money::Int
+end
+
+function new_tower(type::String; upgrades=(0,0,0), banked_money=0)
+	Tower(type, upgrades, banked_money)
+end
+
 # TODO would be nice to cache this and update less frequently.
 towers_filename = download("https://statsnite.com/api/btd/v1/towers")
 towers = map(d -> (; (Symbol(k) => v for (k,v) in d)...), JSON.parsefile(towers_filename))

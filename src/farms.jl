@@ -52,3 +52,41 @@ function farm_upgrade_payoff(upgrades, bought_upgrades)
 	dearn = farm_earning(upgrades .+ bought_upgrades) - farm_earning(upgrades)
 	return dcost / dearn
 end
+
+"""
+  bank_max(upgrades)
+
+Returns the maximum amount of money that a bank can store.
+"""
+function bank_max(upgrades)
+    # TODO account for the monkey knowledge that allows more storage.
+    path2 = upgrades[2]
+    if path2 == 3
+        return 7000
+    elseif path2 >= 4
+        return 10000
+    else
+        return 0
+    end
+end
+
+"""
+Simulates 1 full round of bank income.
+Adds money to the bank, then applies intrest.
+"""
+function update_bank(tower::Tower)
+    if tower.type != "Banana Farm"
+        return
+    end
+
+    path2 = tower.upgrades[2]
+    if path2 < 3
+        return
+    end
+
+    tower.banked_money = floor((tower.banked_money + 230) * 1.15)
+    b_max = bank_max(tower.upgrades)
+    if tower.banked_money >= b_max
+        tower.banked_money = b_max
+    end
+end
