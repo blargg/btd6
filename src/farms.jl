@@ -32,12 +32,13 @@ This is a rough calculation, as banks will earn various amounts depending on cur
 """
 function farm_earning(upgrades)
     (t,m,b) = upgrades
-    base_gen = bunches[t] * bunch_value(t)
+    bunches_produced = bunches[t]
+    bv = bunch_value(t)
 
     if m == 2
-        base_gen *= 1.25
+        bv = floor(bunch_value * 1.25)
     end
-    return base_gen
+    return bunches_produced * bv 
 end
 
 function farm_payoff(upgrades::Tuple{Number, Number, Number})
