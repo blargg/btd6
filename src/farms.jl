@@ -26,11 +26,37 @@ function bunch_value(path1_upgrades)
 end
 
 """
+Updates the farm after 1 round of play.
+
+If it is a bank, update the bank holdings. Automatically cash them out when they are (nearly?) full.
+Return the money generated.
+"""
+function update_farm(tower::Tower)::Number
+    (t,m,b) = tower.upgrades
+
+    if m >= 3
+        update_bank(tower)
+        # Cash out banks when they are within 200 of their max
+        if tower.banked_money >= bank_max(tower.upgrades) - 200
+            ret = tower.banked_money
+            tower.banked_money = 0
+            return ret
+        end
+        return 0
+    elseif b >= 3
+        throw("unimplemented")
+    else
+        return farm_earning(upgrades)
+    end
+end
+
+"""
 Calculate how much a banana farm earns per round.
 
 This is a rough calculation, as banks will earn various amounts depending on current savings.
+This works for default (less than 3 upgrades in any) and top tree.
 """
-function farm_earning(upgrades)
+function farm_earning(upgrades)::Number
     (t,m,b) = upgrades
     bunches_produced = bunches[t]
     bv = bunch_value(t)

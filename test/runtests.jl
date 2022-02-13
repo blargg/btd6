@@ -41,4 +41,18 @@ end
         update_bank(non_bank)
         @test non_bank.banked_money == 0
     end
+
+    @testset "update_farm" begin
+        @testset "banks" begin
+            bank = new_tower("Banana Farm", upgrades=(0,3,0))
+            @test update_farm(bank) == 0
+            @test bank.banked_money == 264
+
+            # Cash out when the bank fills up.
+            # In this case, we are clearing the bank at the end of the round, so we must have forgetten to clear it.
+            bank.banked_money = 7000
+            @test update_farm(bank) == 7000
+            @test bank.banked_money == 0
+        end
+    end
 end
